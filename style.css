@@ -1,0 +1,132 @@
+body {
+  background-color: #181818;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #e0e0e0;
+  margin-bottom: 100px;
+}
+
+#exercise-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+#exercise-cards .card {
+  cursor: pointer;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  transition: transform 0.2s, background 0.3s;
+  background-color: #242424;
+  color: #e0e0e0;
+  text-align: center;
+  padding: 14px;
+}
+
+#exercise-cards .card:hover {
+  transform: scale(1.03);
+  background-color: #2e2e2e;
+}
+
+.card-title { font-weight: bold; font-size: 1rem; }
+
+#lower-options {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 5px;
+}
+
+#lower-options button {
+  flex: 0 0 48%;
+  min-width: 120px;
+  background-color: #242424;
+  border: 1px solid #444;
+  color: #e0e0e0;
+  border-radius: 16px;
+  padding: 14px;
+  font-weight: bold;
+}
+
+#lower-options button:hover { background-color: #2e2e2e; }
+
+.input-group-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 12px;
+  transition: background 0.3s, transform 0.3s, opacity 0.3s;
+  background-color: #2e2e2e;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  color: #e0e0e0;
+}
+
+.input-group-row.done { background-color: #3a5f3a; color: #f0f0f0; transform: scale(1.02); }
+.input-group-row.deleting { opacity: 0; transform: translateX(50px) scale(0.9); }
+
+.input-group-row input {
+  width: 60px;
+  margin-right: 5px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #555;
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+.set-done-icon, .set-delete-icon, .card-body .btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: inline-flex; justify-content: center; align-items: center;
+  font-weight: bold; cursor: pointer; margin-left: 10px;
+}
+
+.set-done-icon {
+  border: 2px solid #888; color: #888; font-size: 1.2rem;
+}
+
+.set-done-icon.done { background-color: #3a5f3a; border-color: #3a5f3a; color: #f0f0f0; }
+
+.set-delete-icon {
+  border: 2px solid #a05050; color: #a05050; margin-left:auto;
+}
+
+.set-delete-icon:hover { background-color: #a05050; color: #fff; }
+
+.btn.add-exercise-card {
+  background-color: #242424; color: #e0e0e0;
+  border: 1px dashed #555; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold; font-size: 1rem; height: 80px; cursor: pointer;
+}
+
+.btn.add-exercise-card:hover { background-color: #2e2e2e; }
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.btn.add-exercise-card.pop { animation: popIn 0.3s ease forwards; }
+
+#exercise-history {
+  max-height: 200px; overflow-y: auto; margin-top: 6px; padding-right: 6px;
+}
+
+#exercise-history::-webkit-scrollbar { width: 6px; }
+#exercise-history::-webkit-scrollbar-thumb { background-color: #555; border-radius: 6px; }
+
+.history-card {
+  background-color: #2b2b2b; padding: 8px 12px;
+  border-radius: 12px; font-size: 0.85rem; box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  margin-bottom: 6px; display: flex; justify-content: space-between;
+}
+.hist-date { font-weight: bold; color: #bbb; }
+.hist-data { color: #ddd; }
+
+#exercise-cards .card.deleting,
+.input-group-row.deleting { opacity: 0; transform: translateX(50px) scale(0.9); transition: all 0.3s; }
+
+@media (max-width: 576px) { #lower-options button { width:48%; } }
