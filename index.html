@@ -5,37 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trainingsplan App</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="style.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-dark text-light">
 
-<nav class="navbar navbar-dark bg-dark px-3">
-  <span class="navbar-brand mb-0 h1">OK/UK Trainingsplan</span>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Trainingsplan</a>
+    <div class="d-flex">
+      <button class="btn btn-outline-light me-2" id="navbar-ok" onclick="switchBodyNav('Oberkörper')">Oberkörper</button>
+      <button class="btn btn-outline-light" id="navbar-uk" onclick="switchBodyNav('Unterkörper')">Unterkörper</button>
+    </div>
+  </div>
 </nav>
 
-<div class="container mt-3">
-  <!-- Körperbereich Auswahl -->
-  <div id="body-section" class="mb-3">
-    <button class="btn btn-outline-light me-2 body-tab active" onclick="switchBody('Oberkörper')">Oberkörper</button>
-    <button class="btn btn-outline-light me-2 body-tab" onclick="switchBody('Unterkörper')">Unterkörper</button>
-  </div>
+<!-- Day Tabs -->
+<div class="container my-3" id="day-tabs"></div>
 
-  <!-- Reiter A/B -->
-  <div id="day-tabs" class="mb-3"></div>
+<!-- Exercise Cards -->
+<div class="container" id="exercise-cards"></div>
 
-  <!-- Übungen -->
-  <div id="exercise-cards"></div>
-
-  <!-- Übungsdetail -->
-  <div id="exercise-detail" style="display:none;">
-    <h4 class="text-light mb-3" id="exercise-name"></h4>
-    <div id="exercise-sets"></div>
-    <h5 class="text-light mt-3">Vergangene Einträge:</h5>
-    <div id="exercise-history"></div>
-    <button class="btn btn-secondary mt-3" onclick="backToExercises()">Zurück</button>
+<!-- Exercise Detail -->
+<div class="container mt-4" id="exercise-detail" style="display:none;">
+  <div class="card bg-black text-light">
+    <div class="card-body">
+      <h4 class="card-title" id="exercise-name"></h4>
+      <div id="exercise-sets" class="mb-3"></div>
+      <button id="back-button" class="btn btn-outline-light mb-3">Zurück</button>
+      <h5>Vergangene Einträge:</h5>
+      <div id="exercise-history" class="overflow-auto" style="max-height:200px;"></div>
+    </div>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -1,25 +1,100 @@
-body { background:#181818; color:#e0e0e0; font-family:Segoe UI, sans-serif; }
-.container { max-width:980px; }
-
-.body-tab, .day-tab {
-  padding:8px 12px; border-radius:8px; background:#2e2e2e; cursor:pointer; color:#f0f0f0; font-weight:600; margin-right:6px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #f1f1f1;
 }
-.body-tab.active, .day-tab.active { background:#3a5f3a; color:#fff; font-weight:bold; }
 
-.card, .add-exercise-card { 
-  background:#242424; padding:12px; margin-bottom:10px; border-radius:12px; cursor:pointer; font-weight:600; color:#f0f0f0;
-  box-shadow:0 2px 8px rgba(0,0,0,0.5);
+.navbar, .card, .day-tab, .input-group-row input {
+    border-radius: 8px;
 }
-.card:hover, .add-exercise-card:hover { background:#2e2e2e; }
 
-.input-group-row { display:flex; align-items:center; gap:8px; padding:8px; border-radius:10px; background:#2e2e2e; margin-bottom:6px; }
-.input-group-row input { width:80px; border-radius:8px; background:#333; border:1px solid #555; color:#e0e0e0; padding:6px; text-align:center; }
+/* Day Tabs */
+#day-tabs .day-tab {
+    cursor: pointer;
+    padding: 7px 12px;
+    background-color: #1e1e1e;
+    margin-right: 10px;
+    display: inline-block;
+    transition: background 0.2s;
+}
 
-.set-done-icon { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-weight:bold; border:2px solid #888; color:#888; font-size:1.15rem; }
-.set-done-icon.done { background:#3a5f3a; border-color:#3a5f3a; color:#fff; }
+#day-tabs .day-tab.active {
+    background-color: #333333;
+    font-weight: bold;
+}
 
-.set-delete-icon { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-weight:bold; border:2px solid #a05050; color:#a05050; margin-left:auto; }
-.set-delete-icon:hover { background:#a05050; color:#fff; }
+/* Exercise Cards */
+.card-exercise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
 
-#exercise-history { margin-top:8px; max-height:240px; overflow-y:auto; padding-right:6px; }
-.history-card { background:#2b2b2b; padding:8px 12px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; }
+.card-exercise:hover {
+  background-color: #2a2a2a;
+}
+
+.exercise-name {
+  color: #f1f1f1;
+  font-weight: 600;
+  flex: 1;
+  text-align: left;
+}
+
+.exercise-buttons {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.exercise-buttons button {
+  font-size: 0.85rem;
+  padding: 5px 10px;
+}
+
+/* Sets */
+.input-group-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.input-group-row input {
+  width: 60px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #1c1c1c;
+  color: #fff;
+}
+
+.set-done-icon {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #2a2a2a;
+  border-radius: 5px;
+  color: #ccc;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.set-done-icon.done {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.history-card {
+  background-color: #1e1e1e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+}
