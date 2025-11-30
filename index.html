@@ -10,31 +10,29 @@
 <body>
 
 <nav class="navbar navbar-dark bg-dark px-3">
-  <span class="navbar-brand mb-0 h1">Trainingsplan</span>
-  <div>
-    <button onclick="switchDay('upper')" class="btn btn-sm btn-outline-light me-2">Oberkörper</button>
-    <button onclick="switchDay('lower')" class="btn btn-sm btn-outline-light">Unterkörper</button>
-  </div>
+  <span class="navbar-brand mb-0 h1">OK/UK Trainingsplan</span>
 </nav>
 
 <div class="container mt-3">
-  <h3 id="training-title" class="text-light"></h3>
-
-  <div id="lower-options" class="mb-3" style="display:none;">
-    <button onclick="switchLowerDay('A')" class="me-2">Vorderseite (A)</button>
-    <button onclick="switchLowerDay('B')">Rückseite (B)</button>
+  <!-- Körperbereich Auswahl -->
+  <div id="body-section" class="mb-3">
+    <button class="btn btn-outline-light me-2 body-tab active" onclick="switchBody('Oberkörper')">Oberkörper</button>
+    <button class="btn btn-outline-light me-2 body-tab" onclick="switchBody('Unterkörper')">Unterkörper</button>
   </div>
 
-  <div id="main-view">
-    <div id="exercise-cards"></div>
-  </div>
+  <!-- Reiter A/B -->
+  <div id="day-tabs" class="mb-3"></div>
 
-  <div id="detail-view" style="display:none;">
-    <h4 id="exercise-name" class="mb-3 text-light"></h4>
+  <!-- Übungen -->
+  <div id="exercise-cards"></div>
+
+  <!-- Übungsdetail -->
+  <div id="exercise-detail" style="display:none;">
+    <h4 class="text-light mb-3" id="exercise-name"></h4>
     <div id="exercise-sets"></div>
-    <h5 class="mt-3 text-light">Vergangene Einträge:</h5>
+    <h5 class="text-light mt-3">Vergangene Einträge:</h5>
     <div id="exercise-history"></div>
-    <button class="btn btn-secondary mt-3" onclick="backToMain()">Zurück</button>
+    <button class="btn btn-secondary mt-3" onclick="backToExercises()">Zurück</button>
   </div>
 </div>
 
