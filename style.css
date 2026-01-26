@@ -1,15 +1,16 @@
+/* Basis */
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
   background: url("assets/home5.jpg") no-repeat center center fixed;
   background-size: cover;
   color: white;
-  height: 100vh;         /* für volle Höhe */
-  overflow: hidden;      /* Scrollen verhindern */
+  height: 100vh;
+  overflow: hidden; /* verhindert Scrollen */
 }
 
 .page {
-  height: calc(100vh - 56px);
+  height: calc(100vh - 56px); /* Navbar abziehen */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +30,8 @@ body {
   width: 600px;
 }
 
-.plan-card {
+/* Pläne und Übungen */
+.plan-card, .exercise-card {
   background: rgba(255,255,255,0.08);
   padding: 15px;
   border-radius: 15px;
@@ -38,16 +40,8 @@ body {
   transition: 0.2s;
 }
 
-.plan-card:hover {
+.plan-card:hover, .exercise-card:hover {
   background: rgba(255,255,255,0.15);
-}
-
-.exercise-card {
-  background: rgba(255,255,255,0.08);
-  padding: 15px;
-  border-radius: 15px;
-  margin-bottom: 15px;
-  transition: all 0.2s;
 }
 
 .exercise-card input {
@@ -96,12 +90,7 @@ body {
   justify-content: center;
 }
 
-.exercise-header:hover {
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 5px 10px;
-}
-
+/* Day Tabs */
 #day-tabs .day-tab {
   cursor: pointer;
   padding: 7px 12px;
@@ -119,11 +108,11 @@ body {
   cursor: pointer;
 }
 
-/* Navbar Logo abrunden + Größe anpassen */
+/* Navbar Logo */
 .navbar-brand img {
-  height: 50px;      /* Höhe des Logos */
+  height: 50px;
   width: auto;
-  border-radius: 10px; /* Kanten abrunden */
+  border-radius: 10px;
   object-fit: cover;
 }
 
@@ -131,4 +120,66 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .glass {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .plan-card, .exercise-card {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .set-row {
+    flex-direction: column;
+  }
+
+  .set-row input {
+    width: 100%;
+  }
+
+  #day-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #day-tabs .day-tab {
+    margin-bottom: 5px;
+  }
+
+  .home-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .navbar-brand img {
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .home-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .home-content p {
+    font-size: 0.9rem;
+  }
+
+  .plan-card, .exercise-card {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
 }
