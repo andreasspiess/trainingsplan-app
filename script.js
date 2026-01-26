@@ -214,6 +214,7 @@ function openFrequencyModal(){
   `;
 }
 
+
 // Funktion zum Schließen des Modals
 function closeFrequencyModal(){
   const modal = document.getElementById("modal");

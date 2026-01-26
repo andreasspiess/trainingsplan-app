@@ -112,13 +112,24 @@ body {
 
 /* ========================== MODAL ========================== */
 .modal-bg {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
+  position: fixed;      /* bleibt auf dem Screen, nicht scrollt mit Body */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 15px;        /* verhindert, dass Inhalt abgeschnitten wird */
+  overflow-y: auto;     /* scrollt bei kleinen Bildschirmen */
+}
+
+.modal-bg .glass {
+  width: 100%;
+  max-width: 400px;     /* passt sich Handy an */
+  max-height: 90vh;     /* scrollt, wenn Inhalt zu hoch */
+  overflow-y: auto;
 }
 
 /* ========================== HEADER ========================== */
