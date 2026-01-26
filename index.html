@@ -7,39 +7,39 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
 </head>
-<body class="bg-dark text-light">
+<body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Trainingsplan</a>
-    <div class="d-flex">
-      <button class="btn btn-outline-light me-2" id="navbar-ok" onclick="switchBodyNav('Oberkörper')">Oberkörper</button>
-      <button class="btn btn-outline-light" id="navbar-uk" onclick="switchBodyNav('Unterkörper')">Unterkörper</button>
-    </div>
-  </div>
+<nav class="navbar navbar-dark bg-black bg-opacity-75 px-3">
+  <a class="navbar-brand clickable" href="#" onclick="goHome()">
+    <img src="assets/logo.png" alt="Logo" height="40">
+  </a>
 </nav>
 
-<!-- Day Tabs -->
-<div class="container my-3" id="day-tabs"></div>
 
-<!-- Exercise Cards -->
-<div class="container" id="exercise-cards"></div>
+<!-- HOME -->
+<div id="home" class="page">
+  <div class="glass">
+     <h1>Willkommen zu deinem persönlichen Fitness-Guide!</h1>
+    <p>Erstelle deine Trainingspläne, verwalte deine Übungen und tracke deinen Fortschritt – alles an einem Ort.</p>
 
-<!-- Exercise Detail -->
-<div class="container mt-4" id="exercise-detail" style="display:none;">
-  <div class="card bg-black text-light">
-    <div class="card-body">
-      <h4 class="card-title" id="exercise-name"></h4>
-      <div id="exercise-sets" class="mb-3"></div>
-      <button id="back-button" class="btn btn-outline-light mb-3">Zurück</button>
-      <h5>Vergangene Einträge:</h5>
-      <div id="exercise-history" class="overflow-auto" style="max-height:200px;"></div>
-    </div>
+    <button class="btn btn-success mt-3" onclick="openFrequencyModal()">+ Neuen Plan erstellen</button>
+    <div id="plan-list" class="mt-4"></div>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- TRAINING -->
+<div id="training" class="page" style="display:none;">
+  <div class="glass wide">
+    <h3 id="training-title"></h3>
+    <div id="day-tabs" class="d-flex gap-2 mt-3 mb-3"></div>
+    <div id="exercise-list"></div>
+    <button class="btn btn-outline-light mt-3" onclick="goHome()">Zurück</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal"></div>
+
 <script src="script.js"></script>
 </body>
 </html>

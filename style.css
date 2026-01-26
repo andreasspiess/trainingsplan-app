@@ -1,100 +1,134 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #f1f1f1;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: url("assets/home5.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  height: 100vh;         /* für volle Höhe */
+  overflow: hidden;      /* Scrollen verhindern */
 }
 
-.navbar, .card, .day-tab, .input-group-row input {
-    border-radius: 8px;
+.page {
+  height: calc(100vh - 56px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Day Tabs */
+.glass {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  width: 420px;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.glass.wide {
+  width: 600px;
+}
+
+.plan-card {
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.plan-card:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.exercise-card {
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  transition: all 0.2s;
+}
+
+.exercise-card input {
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.set-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.set-row input {
+  flex: 1;
+}
+
+.empty-card {
+  border: 2px dashed rgba(255,255,255,0.4);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 15px;
+  opacity: 0.8;
+}
+
+.history {
+  background: rgba(0,0,0,0.4);
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.exercise-header:hover {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
 #day-tabs .day-tab {
-    cursor: pointer;
-    padding: 7px 12px;
-    background-color: #1e1e1e;
-    margin-right: 10px;
-    display: inline-block;
-    transition: background 0.2s;
+  cursor: pointer;
+  padding: 7px 12px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  transition: 0.2s;
 }
 
 #day-tabs .day-tab.active {
-    background-color: #333333;
-    font-weight: bold;
-}
-
-/* Exercise Cards */
-.card-exercise {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 15px;
-  background-color: #1c1c1c;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.card-exercise:hover {
-  background-color: #2a2a2a;
-}
-
-.exercise-name {
-  color: #f1f1f1;
-  font-weight: 600;
-  flex: 1;
-  text-align: left;
-}
-
-.exercise-buttons {
-  display: flex;
-  gap: 5px;
-  flex-shrink: 0;
-}
-
-.exercise-buttons button {
-  font-size: 0.85rem;
-  padding: 5px 10px;
-}
-
-/* Sets */
-.input-group-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 5px;
-}
-
-.input-group-row input {
-  width: 60px;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: #1c1c1c;
-  color: #fff;
-}
-
-.set-done-icon {
-  cursor: pointer;
-  padding: 5px 10px;
-  background-color: #2a2a2a;
-  border-radius: 5px;
-  color: #ccc;
+  background-color: #333;
   font-weight: bold;
-  transition: background-color 0.2s;
 }
 
-.set-done-icon.done {
-  background-color: #28a745;
-  color: #fff;
+.clickable {
+  cursor: pointer;
 }
 
-.history-card {
-  background-color: #1e1e1e;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-bottom: 3px;
-  font-size: 0.9rem;
+/* Navbar Logo abrunden + Größe anpassen */
+.navbar-brand img {
+  height: 50px;      /* Höhe des Logos */
+  width: auto;
+  border-radius: 10px; /* Kanten abrunden */
+  object-fit: cover;
+}
+
+.navbar-brand {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
