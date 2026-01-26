@@ -75,12 +75,13 @@ body {
   display: flex;
   gap: 10px;
   margin-top: 6px;
-  flex-direction: row; /* immer nebeneinander */
+  flex-direction: row; /* bleibt immer nebeneinander */
+  flex-wrap: wrap;     /* passt sich an, falls wenig Platz */
 }
 
 .set-row input {
   flex: 1;
-  min-width: 60px;
+  min-width: 50px; /* verhindert zu schmale Felder */
 }
 
 /* ========================== EMPTY CARD ========================== */
@@ -280,6 +281,7 @@ body {
     font-size: 0.85rem;
   }
 
+  /* Inputs für Sets bleiben nebeneinander */
   .set-row input {
     min-width: 50px;
   }
