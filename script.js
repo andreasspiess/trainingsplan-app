@@ -198,7 +198,7 @@ header.onclick = (e)=>{
 /* ---------- PLAN ERSTELLEN ---------- */
 function openFrequencyModal(){
   const modal = document.getElementById("modal");
-  modal.style.display="flex";
+  modal.style.display = "flex";
   modal.innerHTML = `
     <div class="glass">
       <h4>Wie oft willst du trainieren?</h4>
@@ -207,9 +207,20 @@ function openFrequencyModal(){
           ${n}x pro Woche
         </button>
       `).join("")}
+      <button class="btn btn-outline-light w-100 mt-3" onclick="closeFrequencyModal()">
+        Abbrechen
+      </button>
     </div>
   `;
 }
+
+// Funktion zum Schließen des Modals
+function closeFrequencyModal(){
+  const modal = document.getElementById("modal");
+  modal.style.display = "none";
+  modal.innerHTML = ""; // Optional: Inhalt leeren
+}
+
 
 function createPlan(days){
   const name = prompt("Name des Trainingsplans:");
