@@ -9,37 +9,39 @@
 </head>
 <body>
 
-<nav class="navbar navbar-dark bg-black bg-opacity-75 px-3">
-  <a class="navbar-brand clickable" href="#" onclick="goHome()">
-    <img src="assets/logo.png" alt="Logo" height="40">
-  </a>
+<nav class="navbar navbar-dark bg-dark px-3">
+  <span class="navbar-brand clickable" onclick="goHome()">
+    <img src="assets/logo.png" alt="Logo">
+  </span>
 </nav>
 
-
-<!-- HOME -->
-<div id="home" class="page">
+<!-- HOME PAGE -->
+<div id="home-page" class="page">
   <div class="glass">
-     <h1>Willkommen zu deinem persönlichen Fitness-Guide!</h1>
-    <p>Erstelle deine Trainingspläne, verwalte deine Übungen und tracke deinen Fortschritt – alles an einem Ort.</p>
+    <h2>Willkommen</h2>
 
-    <button class="btn btn-success mt-3" onclick="openFrequencyModal()">+ Neuen Plan erstellen</button>
-    <div id="plan-list" class="mt-4"></div>
+    <button class="btn btn-success w-100 mb-3"
+      onclick="openFrequencyModal()">
+      Trainingsplan erstellen
+    </button>
+
+    <div id="plan-list"></div>
   </div>
 </div>
 
-<!-- TRAINING -->
-<div id="training" class="page" style="display:none;">
+<!-- PLAN PAGE -->
+<div id="plan-page" class="page" style="display:none;">
   <div class="glass wide">
-    <h3 id="training-title"></h3>
-    <div id="day-tabs" class="d-flex gap-2 mt-3 mb-3"></div>
-    <div id="exercise-list"></div>
-    <button class="btn btn-outline-light mt-3" onclick="goHome()">Zurück</button>
+    <h3 id="plan-title"></h3>
+    <div id="day-tabs" class="d-flex gap-2 mb-3"></div>
+    <div id="exercise-cards"></div>
   </div>
 </div>
 
 <!-- MODAL -->
-<div class="modal-bg" id="modal"></div>
+<div id="modal" class="modal-bg"></div>
 
 <script src="script.js"></script>
 </body>
+
 </html>
