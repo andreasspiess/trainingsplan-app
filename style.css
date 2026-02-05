@@ -169,7 +169,7 @@ body {
 .navbar-brand img {
   height: 50px;
   width: auto;
-  border-radius: 10px;
+  border-radius: 5px;
   object-fit: cover;
 }
 
