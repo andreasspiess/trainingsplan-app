@@ -469,6 +469,13 @@ function editTodayHistory(exIndex) {
   renderExercises();
 }
 
+function setFullHeight() {
+  document.body.style.minHeight = `${window.innerHeight}px`;
+}
+window.addEventListener("resize", setFullHeight);
+window.addEventListener("load", setFullHeight);
+
+
 /* =========================
    INIT
 ========================= */

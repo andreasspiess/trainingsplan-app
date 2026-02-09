@@ -1,13 +1,14 @@
 /* ========================== BASE ========================== */
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  min-height: calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
   background: url("assets/home5.jpg") no-repeat center center;
   background-size: cover;
-  color: white;
-  min-height: 100vh;
-  overflow-y: auto; /* scrollt mit Finger */
+  color: white; 
 }
+
+
 
 .page {
   min-height: calc(100vh - 56px); /* Navbar abziehen */
