@@ -1,12 +1,14 @@
 /* ========================== BASE ========================== */
 body {
-  min-height: calc(100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom));
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
   background: url("assets/home5.jpg") no-repeat center center;
   background-size: cover;
-  color: white; 
+  color: white;
+  overflow-y: auto;
+  /* Höhe wird per JS gesetzt, nicht mehr hier */
 }
+
 
 
 
