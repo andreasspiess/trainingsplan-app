@@ -470,10 +470,13 @@ function editTodayHistory(exIndex) {
 }
 
 function setFullHeight() {
-  document.body.style.minHeight = `${window.innerHeight}px`;
+  const vh = window.innerHeight;
+  document.body.style.minHeight = `${vh}px`;
 }
-window.addEventListener("resize", setFullHeight);
+
+// Beim Laden und bei Größenänderung setzen
 window.addEventListener("load", setFullHeight);
+window.addEventListener("resize", setFullHeight);
 
 
 /* =========================
