@@ -239,7 +239,7 @@ function renderExercises() {
     header.style.cursor = "pointer";
 
     header.onclick = (e) => {
-      if (e.target.tagName !== "BUTTON" && e.target.tagName !== "INPUT") {
+      if (e.target.tagName !== "BUTTON") {
         ex.expanded = !ex.expanded;
         saveData();
         renderExercises();
@@ -338,11 +338,9 @@ function renderExercises() {
         .reverse()
         .map(h => {
           let html = `<div><strong>${h.date}</strong><br>${h.sets.map(s => `${s.weight}kg × ${s.reps}`).join("<br>")}</div>`;
-
           if (h.key === todayKey) {
             html += `<button class="btn btn-sm btn-warning mt-1" onclick="editTodayHistory(${day.exercises.indexOf(ex)})">Bearbeiten</button>`;
           }
-
           return html;
         })
         .join("<hr>");
@@ -354,13 +352,12 @@ function renderExercises() {
     container.appendChild(card);
   });
 
+  // "+ Übung hinzufügen"
   const add = document.createElement("div");
   add.className = "empty-card";
   add.innerText = "+ Übung hinzufügen";
   add.onclick = addExercise;
   container.appendChild(add);
-
-  enableExerciseDrag();
 }
 
 /* =========================
@@ -424,7 +421,6 @@ function finishExercise(ex) {
   };
 
   const existing = ex.history.find(h => h.key === todayKey);
-
   if (existing) {
     existing.sets = entry.sets;
   } else {
@@ -472,44 +468,6 @@ function editTodayHistory(exIndex) {
   saveData();
   renderExercises();
 }
-
-/* =========================
-   DRAG & DROP
-========================= */
-
-function enableExerciseDrag() {
-  const container = document.getElementById("exercise-cards");
-  if (!container) return;
-
-  // Setze touch-action auf die draggable cards, außer leere Karte
-  Array.from(container.children).forEach(card => {
-    if (!card.classList.contains("empty-card")) {
-      card.style.touchAction = "none"; // wichtig für Touch-Geräte
-    }
-  });
-
-  Sortable.create(container, {
-    animation: 150,
-    ghostClass: "drag-ghost",
-    chosenClass: "drag-chosen",
-    dragClass: "drag-dragging",
-    forceFallback: true,          // zwingt Fallback für Mobile Drag
-    fallbackTolerance: 3,         // minimaler Swipe
-    filter: ".empty-card, button, input",
-    preventOnFilter: false,
-    onMove: (evt) => !evt.related.classList.contains("empty-card"),
-    onEnd: (evt) => {
-      const plan = getActivePlan();
-      const day = plan.days[activeDayIndex];
-      const moved = day.exercises.splice(evt.oldIndex, 1)[0];
-      day.exercises.splice(evt.newIndex, 0, moved);
-      saveData();
-      renderExercises(); // neu rendern für korrekten Layout
-    }
-  });
-}
-
-
 
 /* =========================
    INIT

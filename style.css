@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
-  background: url("assets/home2.jpg") no-repeat center top;
+  background: url("assets/home5.jpg") no-repeat center top;
   background-size: cover;
   color: white;
   min-height: 100vh;
@@ -291,21 +291,4 @@ body {
     padding: 10px;
     font-size: 0.85rem;
   }
-
-  /* Inputs für Sets bleiben nebeneinander */
-  .set-row input {
-    min-width: 50px;
-  }
-}
-
-.drag-ghost {
-  opacity: 0.3;
-}
-
-.drag-chosen {
-  cursor: grabbing;
-}
-
-.exercise-card {
-  cursor: grab;
 }
