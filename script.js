@@ -19,7 +19,7 @@ function saveData() {
 
 function showPage(page) {
   document.querySelectorAll(".page").forEach(p => p.style.display = "none");
-  const el = document.getElementById(page); // nur page, nicht page + "-page"
+  const el = document.getElementById(page);
   if (el) el.style.display = "flex";
 }
 
@@ -43,13 +43,11 @@ function renderPlanList() {
     const card = document.createElement("div");
     card.className = "plan-card d-flex justify-content-between align-items-center";
 
-    // Linker Bereich: Planname + Tage
     const info = document.createElement("div");
     info.innerHTML = `<strong>${plan.name}</strong><br>${plan.days.length} Trainingstage`;
     info.style.cursor = "pointer";
     info.onclick = () => openPlan(plan.id);
 
-    // Rechter Bereich: Buttons
     const buttons = document.createElement("div");
     buttons.style.display = "flex";
     buttons.style.gap = "8px";
@@ -179,7 +177,6 @@ function openPlan(id) {
 
   const plan = getActivePlan();
   if (plan) {
-    // Alle Übungen standardmäßig einklappen
     plan.days.forEach(day => {
       day.exercises.forEach(ex => {
         ex.expanded = false;
@@ -237,25 +234,21 @@ function renderExercises() {
     const card = document.createElement("div");
     card.className = "exercise-card";
 
-    // HEADER mit Name links und Buttons rechts
     const header = document.createElement("div");
     header.className = "d-flex justify-content-between align-items-center exercise-header";
     header.style.cursor = "pointer";
 
-    // Klick auf Header (außer Buttons) → Ein-/Ausklappen
     header.onclick = (e) => {
-      if (e.target.tagName !== "BUTTON") {
+      if (e.target.tagName !== "BUTTON" && e.target.tagName !== "INPUT") {
         ex.expanded = !ex.expanded;
         saveData();
         renderExercises();
       }
     };
 
-    // Name links
     const nameDiv = document.createElement("div");
     nameDiv.innerHTML = `<strong>${ex.name}</strong>`;
 
-    // Buttons rechts
     const btnContainer = document.createElement("div");
     btnContainer.style.display = "flex";
     btnContainer.style.gap = "5px";
@@ -283,7 +276,6 @@ function renderExercises() {
     header.appendChild(btnContainer);
     card.appendChild(header);
 
-    // BODY → nur sichtbar, wenn ex.expanded true
     const body = document.createElement("div");
     body.style.display = ex.expanded ? "block" : "none";
 
@@ -335,7 +327,6 @@ function renderExercises() {
     body.appendChild(addSetBtn);
     body.appendChild(finishBtn);
 
-    // HISTORY
     if (ex.history?.length) {
       const hist = document.createElement("div");
       hist.className = "history";
@@ -363,7 +354,6 @@ function renderExercises() {
     container.appendChild(card);
   });
 
-  // "+ Übung hinzufügen"
   const add = document.createElement("div");
   add.className = "empty-card";
   add.innerText = "+ Übung hinzufügen";
@@ -371,7 +361,6 @@ function renderExercises() {
   container.appendChild(add);
 
   enableExerciseDrag();
-
 }
 
 /* =========================
@@ -413,7 +402,7 @@ function addExercise() {
     name,
     sets: [{ weight: "", reps: "" }],
     history: [],
-    expanded: false, // standardmäßig eingeklappt
+    expanded: false,
     lastWeight: "",
     lastReps: ""
   });
@@ -484,6 +473,10 @@ function editTodayHistory(exIndex) {
   renderExercises();
 }
 
+/* =========================
+   DRAG & DROP
+========================= */
+
 function enableExerciseDrag() {
   const container = document.getElementById("exercise-cards");
   if (!container) return;
@@ -493,24 +486,21 @@ function enableExerciseDrag() {
     ghostClass: "drag-ghost",
     chosenClass: "drag-chosen",
     dragClass: "drag-dragging",
-
-    filter: ".empty-card",
+    touchStartThreshold: 5, // verbessert Touch-Sensibilität
+    filter: ".empty-card, button, input",
+    preventOnFilter: false,
     onMove: (evt) => {
       return !evt.related.classList.contains("empty-card");
     },
-
     onEnd: (evt) => {
       const plan = getActivePlan();
       const day = plan.days[activeDayIndex];
-
       const moved = day.exercises.splice(evt.oldIndex, 1)[0];
       day.exercises.splice(evt.newIndex, 0, moved);
-
       saveData();
     }
   });
 }
-
 
 /* =========================
    INIT
