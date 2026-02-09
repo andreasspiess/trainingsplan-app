@@ -470,11 +470,12 @@ function editTodayHistory(exIndex) {
 }
 
 function setFullHeight() {
+  // echte Viewport-Höhe ermitteln
   const vh = window.innerHeight;
-  document.body.style.minHeight = `${vh}px`;
+  document.body.style.height = `${vh}px`;
 }
 
-// Beim Laden und bei Größenänderung setzen
+// beim Laden und bei Resize aufrufen
 window.addEventListener("load", setFullHeight);
 window.addEventListener("resize", setFullHeight);
 

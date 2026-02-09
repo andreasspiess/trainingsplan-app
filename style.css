@@ -6,8 +6,9 @@ body {
   background-size: cover;
   color: white;
   overflow-y: auto;
-  /* Höhe wird per JS gesetzt, nicht mehr hier */
+  /* Höhe wird jetzt per JS gesetzt */
 }
+
 
 
 
