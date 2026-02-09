@@ -9,10 +9,6 @@ body {
   /* Höhe wird jetzt per JS gesetzt */
 }
 
-
-
-
-
 .page {
   min-height: calc(100vh - 56px); /* Navbar abziehen */
   display: flex;

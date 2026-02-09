@@ -469,17 +469,6 @@ function editTodayHistory(exIndex) {
   renderExercises();
 }
 
-function setFullHeight() {
-  // echte Viewport-Höhe ermitteln
-  const vh = window.innerHeight;
-  document.body.style.height = `${vh}px`;
-}
-
-// beim Laden und bei Resize aufrufen
-window.addEventListener("load", setFullHeight);
-window.addEventListener("resize", setFullHeight);
-
-
 /* =========================
    INIT
 ========================= */
