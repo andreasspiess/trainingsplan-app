@@ -297,3 +297,15 @@ body {
     min-width: 50px;
   }
 }
+
+.drag-ghost {
+  opacity: 0.3;
+}
+
+.drag-chosen {
+  cursor: grabbing;
+}
+
+.exercise-card {
+  cursor: grab;
+}

@@ -369,6 +369,9 @@ function renderExercises() {
   add.innerText = "+ Übung hinzufügen";
   add.onclick = addExercise;
   container.appendChild(add);
+
+  enableExerciseDrag();
+
 }
 
 /* =========================
@@ -480,6 +483,34 @@ function editTodayHistory(exIndex) {
   saveData();
   renderExercises();
 }
+
+function enableExerciseDrag() {
+  const container = document.getElementById("exercise-cards");
+  if (!container) return;
+
+  Sortable.create(container, {
+    animation: 150,
+    ghostClass: "drag-ghost",
+    chosenClass: "drag-chosen",
+    dragClass: "drag-dragging",
+
+    filter: ".empty-card",
+    onMove: (evt) => {
+      return !evt.related.classList.contains("empty-card");
+    },
+
+    onEnd: (evt) => {
+      const plan = getActivePlan();
+      const day = plan.days[activeDayIndex];
+
+      const moved = day.exercises.splice(evt.oldIndex, 1)[0];
+      day.exercises.splice(evt.newIndex, 0, moved);
+
+      saveData();
+    }
+  });
+}
+
 
 /* =========================
    INIT
