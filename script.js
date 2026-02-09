@@ -486,9 +486,10 @@ function enableExerciseDrag() {
     ghostClass: "drag-ghost",
     chosenClass: "drag-chosen",
     dragClass: "drag-dragging",
-    touchStartThreshold: 5, // verbessert Touch-Sensibilität
-    filter: ".empty-card, button, input",
-    preventOnFilter: false,
+    touchStartThreshold: 5,       // besseres Touch-Handling
+    forceFallback: true,          // sehr wichtig für Mobile!
+    filter: ".empty-card, button, input", // blockiert Drag auf diesen Elementen
+    preventOnFilter: false,       // damit Buttons & Inputs weiterhin klickbar bleiben
     onMove: (evt) => {
       return !evt.related.classList.contains("empty-card");
     },
@@ -498,9 +499,11 @@ function enableExerciseDrag() {
       const moved = day.exercises.splice(evt.oldIndex, 1)[0];
       day.exercises.splice(evt.newIndex, 0, moved);
       saveData();
+      renderExercises(); // unbedingt neu rendern, sonst Layout stimmt nicht
     }
   });
 }
+
 
 /* =========================
    INIT
