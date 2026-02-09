@@ -481,28 +481,34 @@ function enableExerciseDrag() {
   const container = document.getElementById("exercise-cards");
   if (!container) return;
 
+  // Setze touch-action auf die draggable cards, außer leere Karte
+  Array.from(container.children).forEach(card => {
+    if (!card.classList.contains("empty-card")) {
+      card.style.touchAction = "none"; // wichtig für Touch-Geräte
+    }
+  });
+
   Sortable.create(container, {
     animation: 150,
     ghostClass: "drag-ghost",
     chosenClass: "drag-chosen",
     dragClass: "drag-dragging",
-    touchStartThreshold: 5,       // besseres Touch-Handling
-    forceFallback: true,          // sehr wichtig für Mobile!
-    filter: ".empty-card, button, input", // blockiert Drag auf diesen Elementen
-    preventOnFilter: false,       // damit Buttons & Inputs weiterhin klickbar bleiben
-    onMove: (evt) => {
-      return !evt.related.classList.contains("empty-card");
-    },
+    forceFallback: true,          // zwingt Fallback für Mobile Drag
+    fallbackTolerance: 3,         // minimaler Swipe
+    filter: ".empty-card, button, input",
+    preventOnFilter: false,
+    onMove: (evt) => !evt.related.classList.contains("empty-card"),
     onEnd: (evt) => {
       const plan = getActivePlan();
       const day = plan.days[activeDayIndex];
       const moved = day.exercises.splice(evt.oldIndex, 1)[0];
       day.exercises.splice(evt.newIndex, 0, moved);
       saveData();
-      renderExercises(); // unbedingt neu rendern, sonst Layout stimmt nicht
+      renderExercises(); // neu rendern für korrekten Layout
     }
   });
 }
+
 
 
 /* =========================
